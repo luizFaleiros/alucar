@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/alucar?useTimezone=UTC
+    username: ${db-usuario}
+    password: ${db-senha}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
