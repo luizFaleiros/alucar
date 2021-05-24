@@ -1,6 +1,6 @@
 package br.com.alucar.services;
 
-import br.com.alucar.domain.entities.Automovel;
+import br.com.alucar.domain.entities.Car;
 import br.com.alucar.exceptions.AutomovelNotFoundException;
 import br.com.alucar.repositories.AutomoveisRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,41 +10,41 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CarService implements BaseService<Automovel> {
+public class CarService implements BaseService<Car> {
 
     private final AutomoveisRepository automoveisRepository;
 
     @Override
-    public List<Automovel> findAll() {
+    public List<Car> findAll() {
         return automoveisRepository.findAll();
     }
 
     @Override
-    public Automovel findById(Long id) {
+    public Car findById(Long id) {
         return automoveisRepository.findById(id).orElseThrow(() -> new AutomovelNotFoundException());
     }
 
     @Override
     public void delete(Long id) {
-        Automovel automovel = findById(id);
-        automoveisRepository.delete(automovel);
+        Car car = findById(id);
+        automoveisRepository.delete(car);
     }
 
     @Override
     public void logicalDelete(Long id) {
-        Automovel automovel = findById(id);
-        automovel.setIsDeleted(true);
-        save(automovel);
+        Car car = findById(id);
+        car.setIsDeleted(true);
+        save(car);
     }
 
     @Override
-    public void save(Automovel automovel) {
-        automoveisRepository.save(automovel);
+    public void save(Car car) {
+        automoveisRepository.save(car);
     }
 
     @Override
-    public Automovel update(Automovel entity, Long id) {
-        Automovel bdEntity = findById(id);
+    public Car update(Car entity, Long id) {
+        Car bdEntity = findById(id);
         bdEntity.setModelo(entity.getModelo());
         bdEntity.setNome(entity.getNome());
         bdEntity.setAno(entity.getAno());

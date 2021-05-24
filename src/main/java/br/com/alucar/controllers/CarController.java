@@ -23,6 +23,6 @@ public class CarController {
 
     @GetMapping
     public ResponseEntity<List<CarResponseDTO>> findAll() {
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(carService.findAll().stream().map(carMapper::toResponse).collect(Collectors.toList()));
     }
 }

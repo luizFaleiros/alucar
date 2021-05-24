@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @SuperBuilder
 @Data
-public class Automovel extends BaseEntity {
+public class Car extends BaseEntity {
 
     @Column(name = "MODEL")
     private String modelo;

@@ -1,7 +1,9 @@
 package br.com.alucar.cucumber.steps;
 
 
+import br.com.alucar.controllers.CarController;
 import br.com.alucar.services.CarService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,11 +18,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @RequiredArgsConstructor
 @ActiveProfiles("test")
-@WebMvcTest
+@WebMvcTest(controllers = CarController.class)
 public class PesquisandoCarroStep {
 
     private final MockMvc mockMvc;
-    private final CarService carService;
+    private final ObjectMapper objectMapper;
     private Object response;
 
     @Given("Dado que não informei os o filtro do carro")
