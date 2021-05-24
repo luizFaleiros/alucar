@@ -44,4 +44,8 @@ public class Automovel extends BaseEntity {
 
     @Column(name = "CAMBIO")
     private CambioEnum cambio;
+
+    @Column(name = "RENT_VALUE")
+    private Double rentValue;
+
 }

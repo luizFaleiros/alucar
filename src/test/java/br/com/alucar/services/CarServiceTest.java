@@ -27,10 +27,10 @@ import static org.mockito.Mockito.when;
 
 @DisplayName("Teste da classe Aluguel")
 @ExtendWith(MockitoExtension.class)
-public class AutoMoveisServiceTest {
+public class CarServiceTest {
 
     @InjectMocks
-    private AutoMoveisService autoMoveisService;
+    private CarService carService;
 
     @Mock
     private AutomoveisRepository automoveisRepository;
@@ -51,7 +51,7 @@ public class AutoMoveisServiceTest {
     @Test
     void whenFindAllThenReturnListAutomoveis() {
         when(automoveisRepository.findAll()).thenReturn(List.of(automovelMock));
-        List<Automovel> automoveis = autoMoveisService.findAll();
+        List<Automovel> automoveis = carService.findAll();
         List<Automovel> automoveisTest = Arrays.asList(automovelMock);
         verify(automoveisRepository, times(1)).findAll();
         assertEquals(automoveis.size(),automoveisTest.size());
@@ -63,7 +63,7 @@ public class AutoMoveisServiceTest {
     @Test
     void whenFindAllThenReturnListEmpty() {
         when(automoveisRepository.findAll()).thenReturn(Arrays.asList());
-        List<Automovel> automoveis = autoMoveisService.findAll();
+        List<Automovel> automoveis = carService.findAll();
         verify(automoveisRepository, times(1)).findAll();
         assertEquals(automoveis.size(),0);
     }
@@ -72,7 +72,7 @@ public class AutoMoveisServiceTest {
     @Test
     void whenFindByIdThenReturnAutomovel() {
         when(automoveisRepository.findById(anyLong())).thenReturn(Optional.of(automovelMock));
-        Automovel automovel = autoMoveisService.findById(1L);
+        Automovel automovel = carService.findById(1L);
         verify(automoveisRepository, times(1)).findById(anyLong());
         assertEquals(automovel.getModelo(),automovelMock.getModelo());
         assertEquals(automovel.getNome(),automovelMock.getNome());
@@ -90,14 +90,14 @@ public class AutoMoveisServiceTest {
     @Test
     void whenFindByIdThenThrowNotFound() {
         when(automoveisRepository.findById(anyLong())).thenReturn(Optional.ofNullable(null));
-        assertThrows(AutomovelNotFoundException.class, () -> autoMoveisService.findById(1L));
+        assertThrows(AutomovelNotFoundException.class, () -> carService.findById(1L));
     }
 
     @DisplayName("Deleta automovel")
     @Test
     void whenDeleteThenDeleteAutomovel() {
         when(automoveisRepository.findById(anyLong())).thenReturn(Optional.of(automovelMock));
-        autoMoveisService.delete(1L);
+        carService.delete(1L);
         verify(automoveisRepository, times(1)).findById(anyLong());
         verify(automoveisRepository, times(1)).delete(any(Automovel.class));
     }
@@ -107,7 +107,7 @@ public class AutoMoveisServiceTest {
     void whenLogicalDeleteThenSetTrueOnIsDelete() {
         when(automoveisRepository.findById(anyLong())).thenReturn(Optional.of(automovelMock));
         when(automoveisRepository.save(any(Automovel.class))).thenReturn(automovelMock);
-        autoMoveisService.logicalDelete(1L);
+        carService.logicalDelete(1L);
         verify(automoveisRepository, times(1)).findById(anyLong());
         verify(automoveisRepository, times(1)).save(any(Automovel.class));
     }
@@ -116,7 +116,7 @@ public class AutoMoveisServiceTest {
     @Test
     void whenSaveThenSaveAutomovelOnDb() {
         when(automoveisRepository.save(any(Automovel.class))).thenReturn(automovelMock);
-        autoMoveisService.save(automovelMock);
+        carService.save(automovelMock);
         verify(automoveisRepository, times(1)).save(any(Automovel.class));
     }
 
@@ -125,7 +125,7 @@ public class AutoMoveisServiceTest {
     void whenUpdateThenUpdateAutomovelOnDb() {
         when(automoveisRepository.findById(anyLong())).thenReturn(Optional.of(automovelMock));
         when(automoveisRepository.save(any(Automovel.class))).thenReturn(automovelMock);
-        Automovel automovel = autoMoveisService.update(automovelMock, 1L);
+        Automovel automovel = carService.update(automovelMock, 1L);
         verify(automoveisRepository, times(1)).findById(anyLong());
         verify(automoveisRepository, times(1)).save(any(Automovel.class));
         assertEquals(automovel.getModelo(),automovelMock.getModelo());

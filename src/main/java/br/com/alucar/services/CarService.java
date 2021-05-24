@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AutoMoveisService implements BaseService<Automovel> {
+public class CarService implements BaseService<Automovel> {
 
     private final AutomoveisRepository automoveisRepository;
 
