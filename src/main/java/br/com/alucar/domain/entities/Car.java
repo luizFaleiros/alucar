@@ -24,11 +24,11 @@ public class Car extends BaseEntity {
     @Column(name = "MODEL")
     private String modelo;
 
-    @Column(name = "NOME")
-    private String nome;
+    @Column(name = "NAME")
+    private String name;
 
-    @Column(name = "ANO")
-    private Long ano;
+    @Column(name = "YEAR")
+    private Long year;
 
     @Column(name = "TYPE")
     private AutoTypeEnum type;
@@ -42,10 +42,14 @@ public class Car extends BaseEntity {
     @Column(name = "COLOR")
     private ColorEnum color;
 
-    @Column(name = "CAMBIO")
-    private CambioEnum cambio;
+    @Column(name = "SHIFT")
+    private CambioEnum shift;
 
     @Column(name = "RENT_VALUE")
     private Double rentValue;
+
+
+    @Column(name = "IS_RENTED")
+    private Boolean isRented = false;
 
 }

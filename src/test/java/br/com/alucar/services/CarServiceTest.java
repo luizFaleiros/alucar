@@ -5,7 +5,7 @@ import br.com.alucar.domain.enums.AutoTypeEnum;
 import br.com.alucar.domain.enums.CambioEnum;
 import br.com.alucar.domain.enums.ColorEnum;
 import br.com.alucar.exceptions.AutomovelNotFoundException;
-import br.com.alucar.repositories.AutomoveisRepository;
+import br.com.alucar.repositories.CarRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,27 +33,27 @@ public class CarServiceTest {
     private CarService carService;
 
     @Mock
-    private AutomoveisRepository automoveisRepository;
+    private CarRepository carRepository;
 
     private Car carMock = Car.builder()
             .modelo("XYZ")
-                .nome("Gol")
-                .ano(Integer.toUnsignedLong(1983))
+                .name("Gol")
+                .year(Integer.toUnsignedLong(1983))
             .type(AutoTypeEnum.MIDDLE)
                 .seatsQuantity(Integer.toUnsignedLong(5))
             .portQuantity(Integer.toUnsignedLong(2))
             .color(ColorEnum.WHITE)
-                .cambio(CambioEnum.MANUAL)
+                .shift(CambioEnum.MANUAL)
                 .isDeleted(false)
                 .build();
 
     @DisplayName("Retorna uma lista de automoveis")
     @Test
     void whenFindAllThenReturnListAutomoveis() {
-        when(automoveisRepository.findAll()).thenReturn(List.of(carMock));
+        when(carRepository.findAll()).thenReturn(List.of(carMock));
         List<Car> automoveis = carService.findAll();
         List<Car> automoveisTest = Arrays.asList(carMock);
-        verify(automoveisRepository, times(1)).findAll();
+        verify(carRepository, times(1)).findAll();
         assertEquals(automoveis.size(),automoveisTest.size());
         assertEquals(automoveis.hashCode(), automoveisTest.hashCode());
     }
@@ -62,26 +62,26 @@ public class CarServiceTest {
     @DisplayName("Retorna uma lista vazia")
     @Test
     void whenFindAllThenReturnListEmpty() {
-        when(automoveisRepository.findAll()).thenReturn(Arrays.asList());
+        when(carRepository.findAll()).thenReturn(Arrays.asList());
         List<Car> automoveis = carService.findAll();
-        verify(automoveisRepository, times(1)).findAll();
+        verify(carRepository, times(1)).findAll();
         assertEquals(automoveis.size(),0);
     }
 
     @DisplayName("Retorna um automovel")
     @Test
     void whenFindByIdThenReturnAutomovel() {
-        when(automoveisRepository.findById(anyLong())).thenReturn(Optional.of(carMock));
+        when(carRepository.findById(anyLong())).thenReturn(Optional.of(carMock));
         Car car = carService.findById(1L);
-        verify(automoveisRepository, times(1)).findById(anyLong());
+        verify(carRepository, times(1)).findById(anyLong());
         assertEquals(car.getModelo(), carMock.getModelo());
-        assertEquals(car.getNome(), carMock.getNome());
-        assertEquals(car.getAno(), carMock.getAno());
+        assertEquals(car.getName(), carMock.getName());
+        assertEquals(car.getYear(), carMock.getYear());
         assertEquals(car.getType(), carMock.getType());
         assertEquals(car.getSeatsQuantity(), carMock.getSeatsQuantity());
         assertEquals(car.getPortQuantity(), carMock.getPortQuantity());
         assertEquals(car.getColor(), carMock.getColor());
-        assertEquals(car.getCambio(), carMock.getCambio());
+        assertEquals(car.getShift(), carMock.getShift());
         assertEquals(car.hashCode(), carMock.hashCode());
     }
 
@@ -89,53 +89,53 @@ public class CarServiceTest {
     @DisplayName("Joga erro caso não tenha um automovel")
     @Test
     void whenFindByIdThenThrowNotFound() {
-        when(automoveisRepository.findById(anyLong())).thenReturn(Optional.ofNullable(null));
+        when(carRepository.findById(anyLong())).thenReturn(Optional.ofNullable(null));
         assertThrows(AutomovelNotFoundException.class, () -> carService.findById(1L));
     }
 
     @DisplayName("Deleta automovel")
     @Test
     void whenDeleteThenDeleteAutomovel() {
-        when(automoveisRepository.findById(anyLong())).thenReturn(Optional.of(carMock));
+        when(carRepository.findById(anyLong())).thenReturn(Optional.of(carMock));
         carService.delete(1L);
-        verify(automoveisRepository, times(1)).findById(anyLong());
-        verify(automoveisRepository, times(1)).delete(any(Car.class));
+        verify(carRepository, times(1)).findById(anyLong());
+        verify(carRepository, times(1)).delete(any(Car.class));
     }
 
     @DisplayName("Seta verdadeiro no isdeleted para fazer delete logico")
     @Test
     void whenLogicalDeleteThenSetTrueOnIsDelete() {
-        when(automoveisRepository.findById(anyLong())).thenReturn(Optional.of(carMock));
-        when(automoveisRepository.save(any(Car.class))).thenReturn(carMock);
+        when(carRepository.findById(anyLong())).thenReturn(Optional.of(carMock));
+        when(carRepository.save(any(Car.class))).thenReturn(carMock);
         carService.logicalDelete(1L);
-        verify(automoveisRepository, times(1)).findById(anyLong());
-        verify(automoveisRepository, times(1)).save(any(Car.class));
+        verify(carRepository, times(1)).findById(anyLong());
+        verify(carRepository, times(1)).save(any(Car.class));
     }
 
     @DisplayName("Salva um carro no estoque")
     @Test
     void whenSaveThenSaveAutomovelOnDb() {
-        when(automoveisRepository.save(any(Car.class))).thenReturn(carMock);
+        when(carRepository.save(any(Car.class))).thenReturn(carMock);
         carService.save(carMock);
-        verify(automoveisRepository, times(1)).save(any(Car.class));
+        verify(carRepository, times(1)).save(any(Car.class));
     }
 
     @DisplayName("Atualiza um carro do estoque")
     @Test
     void whenUpdateThenUpdateAutomovelOnDb() {
-        when(automoveisRepository.findById(anyLong())).thenReturn(Optional.of(carMock));
-        when(automoveisRepository.save(any(Car.class))).thenReturn(carMock);
+        when(carRepository.findById(anyLong())).thenReturn(Optional.of(carMock));
+        when(carRepository.save(any(Car.class))).thenReturn(carMock);
         Car car = carService.update(carMock, 1L);
-        verify(automoveisRepository, times(1)).findById(anyLong());
-        verify(automoveisRepository, times(1)).save(any(Car.class));
+        verify(carRepository, times(1)).findById(anyLong());
+        verify(carRepository, times(1)).save(any(Car.class));
         assertEquals(car.getModelo(), carMock.getModelo());
-        assertEquals(car.getNome(), carMock.getNome());
-        assertEquals(car.getAno(), carMock.getAno());
+        assertEquals(car.getName(), carMock.getName());
+        assertEquals(car.getYear(), carMock.getYear());
         assertEquals(car.getType(), carMock.getType());
         assertEquals(car.getSeatsQuantity(), carMock.getSeatsQuantity());
         assertEquals(car.getPortQuantity(), carMock.getPortQuantity());
         assertEquals(car.getColor(), carMock.getColor());
-        assertEquals(car.getCambio(), carMock.getCambio());
+        assertEquals(car.getShift(), carMock.getShift());
         assertEquals(car.hashCode(), carMock.hashCode());
     }
 

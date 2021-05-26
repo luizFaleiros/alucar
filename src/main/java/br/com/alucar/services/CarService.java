@@ -1,9 +1,13 @@
 package br.com.alucar.services;
 
+import br.com.alucar.domain.dto.filters.CarFilter;
 import br.com.alucar.domain.entities.Car;
 import br.com.alucar.exceptions.AutomovelNotFoundException;
-import br.com.alucar.repositories.AutomoveisRepository;
+import br.com.alucar.repositories.CarRepository;
+import br.com.alucar.repositories.specification.CarSpecification;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,22 +16,26 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CarService implements BaseService<Car> {
 
-    private final AutomoveisRepository automoveisRepository;
+    private final CarRepository carRepository;
 
     @Override
     public List<Car> findAll() {
-        return automoveisRepository.findAll();
+        return carRepository.findAll();
+    }
+
+    public Page<Car> findAll(CarFilter carFilter, Pageable pageable) {
+        return carRepository.findAll(new CarSpecification(carFilter), pageable);
     }
 
     @Override
     public Car findById(Long id) {
-        return automoveisRepository.findById(id).orElseThrow(() -> new AutomovelNotFoundException());
+        return carRepository.findById(id).orElseThrow(() -> new AutomovelNotFoundException());
     }
 
     @Override
     public void delete(Long id) {
         Car car = findById(id);
-        automoveisRepository.delete(car);
+        carRepository.delete(car);
     }
 
     @Override
@@ -39,21 +47,21 @@ public class CarService implements BaseService<Car> {
 
     @Override
     public void save(Car car) {
-        automoveisRepository.save(car);
+        carRepository.save(car);
     }
 
     @Override
     public Car update(Car entity, Long id) {
         Car bdEntity = findById(id);
         bdEntity.setModelo(entity.getModelo());
-        bdEntity.setNome(entity.getNome());
-        bdEntity.setAno(entity.getAno());
+        bdEntity.setName(entity.getName());
+        bdEntity.setYear(entity.getYear());
         bdEntity.setType(entity.getType());
         bdEntity.setSeatsQuantity(entity.getSeatsQuantity());
         bdEntity.setPortQuantity(entity.getPortQuantity());
         bdEntity.setColor(entity.getColor());
-        bdEntity.setCambio(entity.getCambio());
-        return automoveisRepository.save(bdEntity);
+        bdEntity.setShift(entity.getShift());
+        return carRepository.save(bdEntity);
     }
 
 }

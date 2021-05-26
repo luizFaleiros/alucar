@@ -1,4 +1,4 @@
-package br.com.alucar.domain.dto.responses;
+package br.com.alucar.domain.dto.filters;
 
 import br.com.alucar.domain.enums.AutoTypeEnum;
 import br.com.alucar.domain.enums.CambioEnum;
@@ -7,17 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CarResponseDTO {
+public class CarFilter {
 
-    private Long id;
-
-    private String modelo;
-
-    private String nome;
+    private String name;
 
     private Long year;
 
@@ -29,9 +24,5 @@ public class CarResponseDTO {
 
     private ColorEnum color;
 
-    private CambioEnum cambio;
-
-    private Double rentValue;
-
-    private Boolean isRented;
+    private CambioEnum shift;
 }
