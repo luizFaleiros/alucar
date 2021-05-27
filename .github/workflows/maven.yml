@@ -28,4 +28,4 @@ jobs:
     needs: build
     steps:
       - name: Test with Maven
-        run: mvn test --file pom.xml
+        run: mvn -B test --file pom.xml
