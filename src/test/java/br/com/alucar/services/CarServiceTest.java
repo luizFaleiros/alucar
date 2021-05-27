@@ -1,17 +1,26 @@
 package br.com.alucar.services;
 
+import br.com.alucar.domain.dto.filters.CarFilter;
 import br.com.alucar.domain.entities.Car;
 import br.com.alucar.domain.enums.AutoTypeEnum;
 import br.com.alucar.domain.enums.CambioEnum;
 import br.com.alucar.domain.enums.ColorEnum;
 import br.com.alucar.exceptions.AutomovelNotFoundException;
+import br.com.alucar.helper.CarFilterHelper;
+import br.com.alucar.helper.CarHelper;
 import br.com.alucar.repositories.CarRepository;
+import br.com.alucar.repositories.specification.CarSpecification;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,17 +44,11 @@ public class CarServiceTest {
     @Mock
     private CarRepository carRepository;
 
-    private Car carMock = Car.builder()
-            .modelo("XYZ")
-                .name("Gol")
-                .year(Integer.toUnsignedLong(1983))
-            .type(AutoTypeEnum.MIDDLE)
-                .seatsQuantity(Integer.toUnsignedLong(5))
-            .portQuantity(Integer.toUnsignedLong(2))
-            .color(ColorEnum.WHITE)
-                .shift(CambioEnum.MANUAL)
-                .isDeleted(false)
-                .build();
+    private CarFilter carFilter = CarFilterHelper.carFilter();
+
+    private Car carMock = CarHelper.validCar();
+
+    private Car carMockRented = CarHelper.rentedCar();
 
     @DisplayName("Retorna uma lista de automoveis")
     @Test
@@ -54,8 +57,18 @@ public class CarServiceTest {
         List<Car> automoveis = carService.findAll();
         List<Car> automoveisTest = Arrays.asList(carMock);
         verify(carRepository, times(1)).findAll();
-        assertEquals(automoveis.size(),automoveisTest.size());
+        assertEquals(automoveis.size(), automoveisTest.size());
         assertEquals(automoveis.hashCode(), automoveisTest.hashCode());
+    }
+
+    @DisplayName("Retorna uma pagina de automoveis")
+    @Test
+    void whenFindAllFilteredThenReturnPageAutomoveis() {
+        Page<Car> pageCar = new PageImpl<>(Arrays.asList(carMock));
+        when(carRepository.findAll(any(CarSpecification.class),any(PageRequest.class))).thenReturn(pageCar);
+        Page<Car> automoveis = carService.findAll(carFilter, PageRequest.of(0,1));
+        verify(carRepository, times(0)).findAll(new CarSpecification(carFilter), PageRequest.of(0,1));
+        assertEquals(automoveis.hashCode(), pageCar.hashCode());
     }
 
 
@@ -65,8 +78,10 @@ public class CarServiceTest {
         when(carRepository.findAll()).thenReturn(Arrays.asList());
         List<Car> automoveis = carService.findAll();
         verify(carRepository, times(1)).findAll();
-        assertEquals(automoveis.size(),0);
+        assertEquals(automoveis.size(), 0);
     }
+
+
 
     @DisplayName("Retorna um automovel")
     @Test
