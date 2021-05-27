@@ -26,6 +26,7 @@ jobs:
     - name: Test with Maven
       run: mvn test
   test:
+    needs: build
     - name: Test with Maven
       run: mvn test
 
