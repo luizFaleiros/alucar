@@ -3,13 +3,17 @@
 
 name: Java CI with Maven
 
-on: push
+on:
+  push:
+    branches: [ main, develop]
   pull_request:
     branches: [ main, develop ]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -19,6 +23,8 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Test with Maven
+      run: mvn test
   test:
     - name: Test with Maven
       run: mvn test
