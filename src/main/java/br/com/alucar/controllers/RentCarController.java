@@ -47,7 +47,7 @@ public class RentCarController implements ControllerBase<RentCarFilter,RentCarDt
     @DeleteMapping("/id")
     @Override
     public ResponseEntity<Void> delete(Long id) {
-        rentCarService.logicalDelete(id);
+        rentCarService.delete(id);
         return ResponseEntity.ok().build();
     }
 }

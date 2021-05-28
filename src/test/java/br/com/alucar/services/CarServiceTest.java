@@ -2,7 +2,7 @@ package br.com.alucar.services;
 
 import br.com.alucar.domain.dto.filters.CarFilter;
 import br.com.alucar.domain.entities.Car;
-import br.com.alucar.exceptions.AutomovelNotFoundException;
+import br.com.alucar.exceptions.CarNotFoundException;
 import br.com.alucar.helper.CarFilterHelper;
 import br.com.alucar.helper.CarHelper;
 import br.com.alucar.repositories.CarRepository;
@@ -100,7 +100,7 @@ public class CarServiceTest {
     @Test
     void whenFindByIdThenThrowNotFound() {
         when(carRepository.findById(anyLong())).thenReturn(Optional.ofNullable(null));
-        assertThrows(AutomovelNotFoundException.class, () -> carService.findById(1L));
+        assertThrows(CarNotFoundException.class, () -> carService.findById(1L));
     }
 
     @DisplayName("Deleta automovel")
