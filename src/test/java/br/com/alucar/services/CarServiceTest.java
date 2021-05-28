@@ -2,9 +2,6 @@ package br.com.alucar.services;
 
 import br.com.alucar.domain.dto.filters.CarFilter;
 import br.com.alucar.domain.entities.Car;
-import br.com.alucar.domain.enums.AutoTypeEnum;
-import br.com.alucar.domain.enums.CambioEnum;
-import br.com.alucar.domain.enums.ColorEnum;
 import br.com.alucar.exceptions.AutomovelNotFoundException;
 import br.com.alucar.helper.CarFilterHelper;
 import br.com.alucar.helper.CarHelper;
@@ -15,12 +12,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Arrays;
 import java.util.List;

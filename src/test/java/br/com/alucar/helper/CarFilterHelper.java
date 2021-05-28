@@ -2,7 +2,7 @@ package br.com.alucar.helper;
 
 import br.com.alucar.domain.dto.filters.CarFilter;
 import br.com.alucar.domain.enums.AutoTypeEnum;
-import br.com.alucar.domain.enums.CambioEnum;
+import br.com.alucar.domain.enums.ShiftEnum;
 import br.com.alucar.domain.enums.ColorEnum;
 
 public class CarFilterHelper {
@@ -16,7 +16,7 @@ public class CarFilterHelper {
                 .seatsQuantity(Integer.toUnsignedLong(5))
                 .portQuantity(Integer.toUnsignedLong(2))
                 .color(ColorEnum.WHITE)
-                .shift(CambioEnum.MANUAL)
+                .shift(ShiftEnum.MANUAL)
                 .build();
 
     }

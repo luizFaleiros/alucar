@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CarService implements BaseService<Car> {
+public class CarService implements ServiceWithFilter<Car, CarFilter> {
 
     private final CarRepository carRepository;
 

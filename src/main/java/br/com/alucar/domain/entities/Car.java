@@ -1,18 +1,16 @@
 package br.com.alucar.domain.entities;
 
 import br.com.alucar.domain.enums.AutoTypeEnum;
-import br.com.alucar.domain.enums.CambioEnum;
+import br.com.alucar.domain.enums.ShiftEnum;
 import br.com.alucar.domain.enums.ColorEnum;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.time.LocalDate;
-import java.util.List;
+import javax.persistence.OneToOne;
 
 @Entity
 @AllArgsConstructor
@@ -43,13 +41,15 @@ public class Car extends BaseEntity {
     private ColorEnum color;
 
     @Column(name = "SHIFT")
-    private CambioEnum shift;
+    private ShiftEnum shift;
 
     @Column(name = "RENT_VALUE")
     private Double rentValue;
 
-
     @Column(name = "IS_RENTED")
     private Boolean isRented = false;
+
+    @OneToOne(mappedBy = "car")
+    private  RentCar rentCar;
 
 }
