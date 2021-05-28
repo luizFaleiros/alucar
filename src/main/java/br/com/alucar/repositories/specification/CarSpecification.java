@@ -45,7 +45,6 @@ public class CarSpecification implements Specification<Car> {
 
         Optional.ofNullable(carFilter.getPortQuantity())
                 .ifPresent(ports -> add(predicate, criteriaBuilder.equal(root.get("portQuantity"), ports)));
-
         return predicate;
     }
 

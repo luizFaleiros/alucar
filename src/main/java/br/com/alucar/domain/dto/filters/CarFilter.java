@@ -1,7 +1,7 @@
 package br.com.alucar.domain.dto.filters;
 
 import br.com.alucar.domain.enums.AutoTypeEnum;
-import br.com.alucar.domain.enums.CambioEnum;
+import br.com.alucar.domain.enums.ShiftEnum;
 import br.com.alucar.domain.enums.ColorEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CarFilter {
+public class CarFilter implements BaseFilter {
 
     private String name;
 
@@ -26,5 +26,5 @@ public class CarFilter {
 
     private ColorEnum color;
 
-    private CambioEnum shift;
+    private ShiftEnum shift;
 }

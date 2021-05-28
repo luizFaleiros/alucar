@@ -1,5 +1,6 @@
 package br.com.alucar.domain.mappers;
 
+import br.com.alucar.domain.dto.CarDTO;
 import br.com.alucar.domain.dto.responses.CarResponseDTO;
 import br.com.alucar.domain.entities.Car;
 import org.mapstruct.Mapper;
@@ -8,4 +9,6 @@ import org.mapstruct.Mapper;
 public interface CarMapper {
 
     CarResponseDTO toResponse(Car car);
+
+    Car toEntity(CarDTO carDTO);
 }

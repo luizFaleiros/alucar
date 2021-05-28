@@ -2,7 +2,7 @@ package br.com.alucar.services;
 
 import br.com.alucar.domain.dto.filters.CarFilter;
 import br.com.alucar.domain.entities.Car;
-import br.com.alucar.exceptions.AutomovelNotFoundException;
+import br.com.alucar.exceptions.CarNotFoundException;
 import br.com.alucar.repositories.CarRepository;
 import br.com.alucar.repositories.specification.CarSpecification;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CarService implements BaseService<Car> {
+public class CarService implements ServiceWithFilter<Car, CarFilter> {
 
     private final CarRepository carRepository;
 
@@ -29,7 +29,7 @@ public class CarService implements BaseService<Car> {
 
     @Override
     public Car findById(Long id) {
-        return carRepository.findById(id).orElseThrow(() -> new AutomovelNotFoundException());
+        return carRepository.findById(id).orElseThrow(CarNotFoundException::new);
     }
 
     @Override
