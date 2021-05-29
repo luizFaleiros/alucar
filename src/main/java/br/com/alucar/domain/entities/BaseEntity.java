@@ -30,7 +30,7 @@ public abstract class BaseEntity {
     private LocalDate modifiedDate;
 
     @Column(name = "MODIFIED_BY")
-    private LocalDate modifiedBy;
+    private String modifiedBy;
 
     @Column(name = "IS_DELETED")
     private Boolean isDeleted;
