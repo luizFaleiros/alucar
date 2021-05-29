@@ -1,6 +1,7 @@
 package br.com.alucar.services;
 
 import br.com.alucar.domain.dto.filters.RentCarFilter;
+import br.com.alucar.domain.entities.Car;
 import br.com.alucar.domain.entities.RentCar;
 import br.com.alucar.exceptions.RentCarNotFoundException;
 import br.com.alucar.repositories.RentCarRepository;
@@ -17,6 +18,8 @@ import java.util.List;
 public class RentCarService implements ServiceWithFilter<RentCar, RentCarFilter> {
 
     private final RentCarRepository rentCarRepository;
+
+    private final CarService carService;
 
     @Override
     public List<RentCar> findAll() {
@@ -44,6 +47,14 @@ public class RentCarService implements ServiceWithFilter<RentCar, RentCarFilter>
 
     @Override
     public void save(RentCar entity) {
+
+    }
+
+    public void save(RentCar entity, Long carId) {
+
+        Car car = carService.findById(carId);
+        car.setIsRented(true);
+        entity.setCar(car);
         rentCarRepository.save(entity);
     }
 

@@ -1,6 +1,6 @@
 package br.com.alucar.domain.entities;
 
-import br.com.alucar.domain.enums.AutoTypeEnum;
+import br.com.alucar.domain.enums.CarTypeEnum;
 import br.com.alucar.domain.enums.ShiftEnum;
 import br.com.alucar.domain.enums.ColorEnum;
 import lombok.AllArgsConstructor;
@@ -10,6 +10,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -29,7 +30,7 @@ public class Car extends BaseEntity {
     private Long year;
 
     @Column(name = "TYPE")
-    private AutoTypeEnum type;
+    private CarTypeEnum type;
 
     @Column(name = "SEATS_QUANTITY")
     private Long seatsQuantity;
@@ -48,8 +49,5 @@ public class Car extends BaseEntity {
 
     @Column(name = "IS_RENTED")
     private Boolean isRented = false;
-
-    @OneToOne(mappedBy = "car")
-    private  RentCar rentCar;
 
 }

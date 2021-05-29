@@ -35,8 +35,6 @@ public class PesquisandoCarroStep {
     @Given("Dado que não informei os o filtro do carro")
     public void dado_que_não_informei_os_o_filtro_do_carro() throws Exception {
         var a = mockMvc.perform(MockMvcRequestBuilders.post("/car"));
-//                .andExpect(MockMvcResultMatchers
-//        .status().isOk()).andReturn();
     }
 
 
