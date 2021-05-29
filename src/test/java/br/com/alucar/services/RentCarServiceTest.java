@@ -1,7 +1,9 @@
 package br.com.alucar.services;
 
+import br.com.alucar.domain.entities.Car;
 import br.com.alucar.domain.entities.RentCar;
 import br.com.alucar.exceptions.RentCarNotFoundException;
+import br.com.alucar.helper.CarHelper;
 import br.com.alucar.helper.RentCarHelper;
 import br.com.alucar.repositories.RentCarRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -33,7 +35,12 @@ public class RentCarServiceTest {
     @Mock
     private RentCarRepository rentCarRepository;
 
+    @Mock
+    private CarService carService;
+
     private RentCar rentCarMock = RentCarHelper.montRentCar();
+
+    private Car carMock = CarHelper.validCar();
 
 
     @DisplayName("Retorna uma lista de automoveis")
@@ -105,7 +112,8 @@ public class RentCarServiceTest {
     @Test
     void whenSaveThenSaveAutomovelOnDb() {
         when(rentCarRepository.save(any(RentCar.class))).thenReturn(rentCarMock);
-        rentCarService.save(rentCarMock);
+        when(carService.findById(anyLong())).thenReturn(carMock);
+        rentCarService.save(rentCarMock, 1L);
         verify(rentCarRepository, times(1)).save(any(RentCar.class));
     }
 

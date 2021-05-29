@@ -1,6 +1,6 @@
 package br.com.alucar.domain.dto;
 
-import br.com.alucar.domain.enums.AutoTypeEnum;
+import br.com.alucar.domain.enums.CarTypeEnum;
 import br.com.alucar.domain.enums.ShiftEnum;
 import br.com.alucar.domain.enums.ColorEnum;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -28,7 +27,7 @@ public class CarDTO implements BaseDTO {
     private Long year;
 
     @NotNull
-    private AutoTypeEnum type;
+    private CarTypeEnum type;
 
     @NotNull
     private Long seatsQuantity;

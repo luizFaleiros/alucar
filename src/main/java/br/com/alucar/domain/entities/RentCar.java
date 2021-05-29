@@ -9,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
@@ -33,8 +34,7 @@ public class RentCar extends BaseEntity{
     @Column(name = "FINAL_DATE")
     private LocalDateTime finalDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Car_ID", referencedColumnName = "id")
+    @ManyToOne
     private Car car;
 
 }

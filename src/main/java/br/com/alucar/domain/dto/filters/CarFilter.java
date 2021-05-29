@@ -1,6 +1,6 @@
 package br.com.alucar.domain.dto.filters;
 
-import br.com.alucar.domain.enums.AutoTypeEnum;
+import br.com.alucar.domain.enums.CarTypeEnum;
 import br.com.alucar.domain.enums.ShiftEnum;
 import br.com.alucar.domain.enums.ColorEnum;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ public class CarFilter implements BaseFilter {
 
     private Long year;
 
-    private AutoTypeEnum type;
+    private CarTypeEnum type;
 
     private Long seatsQuantity;
 

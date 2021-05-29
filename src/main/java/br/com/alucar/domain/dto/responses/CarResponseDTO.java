@@ -1,6 +1,6 @@
 package br.com.alucar.domain.dto.responses;
 
-import br.com.alucar.domain.enums.AutoTypeEnum;
+import br.com.alucar.domain.enums.CarTypeEnum;
 import br.com.alucar.domain.enums.ShiftEnum;
 import br.com.alucar.domain.enums.ColorEnum;
 import lombok.AllArgsConstructor;
@@ -21,7 +21,7 @@ public class CarResponseDTO implements ResponseDTO{
 
     private Long year;
 
-    private AutoTypeEnum type;
+    private CarTypeEnum type;
 
     private Long seatsQuantity;
 
