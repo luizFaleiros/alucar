@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,8 +22,8 @@ public class RentCarController implements ControllerBase<RentCarFilter,RentCarDt
     private final RentCarService rentCarService;
 
     @Override
-    @GetMapping
-    public ResponseEntity<Page<RentCarResponseDTO>> findAll(RentCarFilter carFilter, int size, int page) {
+    @PostMapping("/list")
+    public ResponseEntity<Page<RentCarResponseDTO>> findAll(@RequestBody RentCarFilter carFilter, int size, int page) {
         return null;
     }
 
