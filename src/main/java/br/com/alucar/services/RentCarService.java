@@ -7,10 +7,13 @@ import br.com.alucar.exceptions.RentCarNotFoundException;
 import br.com.alucar.repositories.RentCarRepository;
 import br.com.alucar.repositories.specification.RentCarSpecification;
 import lombok.RequiredArgsConstructor;
+import org.joda.time.Period;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
@@ -51,11 +54,19 @@ public class RentCarService implements ServiceWithFilter<RentCar, RentCarFilter>
     }
 
     public void save(RentCar entity, Long carId) {
-
+        entity.setRentDays(calculateRentDays(entity.getInitialDate(), entity.getFinalDate()));
         Car car = carService.findById(carId);
         car.setIsRented(true);
         entity.setCar(car);
         rentCarRepository.save(entity);
+    }
+
+    private Long calculateRentDays(LocalDateTime initialDate, LocalDateTime finalDate) {
+        if(initialDate.isAfter(finalDate)){
+            throw new RuntimeException();
+        }
+
+        return  initialDate.until(finalDate, ChronoUnit.DAYS);
     }
 
     @Override
