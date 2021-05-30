@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/rent-car")
 @RequiredArgsConstructor
@@ -41,7 +43,7 @@ public class RentCarController implements ControllerBase<RentCarFilter,RentCarDt
 
     @Override
     @PostMapping
-    public ResponseEntity<Void> save(RentCarDto dto) {
+    public ResponseEntity<Void> save(@RequestBody @Valid RentCarDto dto) {
         rentCarService.save(rentCarMapper.toEntity(dto),dto.getCarId());
         return ResponseEntity.ok().build();
     }
