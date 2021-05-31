@@ -19,7 +19,6 @@ public class RentCarSpecification implements Specification<RentCar> {
     @Override
     public Predicate toPredicate(Root<RentCar> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
         Predicate predicate = criteriaBuilder.and();
-
         return predicate;
     }
 

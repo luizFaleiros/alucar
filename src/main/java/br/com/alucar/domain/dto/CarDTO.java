@@ -17,33 +17,14 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class CarDTO{
 
-    @NotEmpty
     private String modelo;
-
-    @NotEmpty
-    private String nome;
-
-    @NotEmpty
+    private String name;
     private Long year;
-
-    @NotNull
     private CarTypeEnum type;
-
-    @NotNull
     private Long seatsQuantity;
-
-    @NotNull
     private Long portQuantity;
-
-    @NotNull
     private ColorEnum color;
-
-    @NotNull
-    private ShiftEnum cambio;
-
-    @NotNull
+    private ShiftEnum shift;
     private Double rentValue;
-
-    @NotNull
     private Boolean isRented;
 }
