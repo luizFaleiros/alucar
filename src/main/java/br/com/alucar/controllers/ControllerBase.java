@@ -1,14 +1,11 @@
 package br.com.alucar.controllers;
 
-import br.com.alucar.domain.dto.BaseDTO;
-import br.com.alucar.domain.dto.filters.BaseFilter;
-import br.com.alucar.domain.dto.responses.ResponseDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
-public interface ControllerBase<FILTER extends BaseFilter,
-        DTO extends BaseDTO,
-        RESPONSE extends ResponseDTO> {
+public interface ControllerBase<FILTER,
+        DTO,
+        RESPONSE> {
 
     ResponseEntity<Page<RESPONSE>> findAll(FILTER carFilter,
                                            int size,

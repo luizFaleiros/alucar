@@ -11,27 +11,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CarResponseDTO implements ResponseDTO{
-
-    private Long id;
+public class CarResponseDTO {
 
     private String modelo;
-
-    private String nome;
-
+    private String name;
     private Long year;
-
     private CarTypeEnum type;
-
     private Long seatsQuantity;
-
     private Long portQuantity;
-
     private ColorEnum color;
-
-    private ShiftEnum cambio;
-
+    private ShiftEnum shift;
     private Double rentValue;
-
     private Boolean isRented;
 }

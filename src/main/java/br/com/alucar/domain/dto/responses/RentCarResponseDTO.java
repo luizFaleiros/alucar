@@ -1,5 +1,5 @@
 package br.com.alucar.domain.dto.responses;
 
-public class RentCarResponseDTO implements ResponseDTO {
+public class RentCarResponseDTO {
 
 }

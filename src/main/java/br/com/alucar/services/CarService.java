@@ -29,7 +29,8 @@ public class CarService implements ServiceWithFilter<Car, CarFilter> {
 
     @Override
     public Car findById(Long id) {
-        return carRepository.findById(id).orElseThrow(CarNotFoundException::new);
+        var a = carRepository.findById(id).orElseThrow(CarNotFoundException::new);
+        return a;
     }
 
     @Override
