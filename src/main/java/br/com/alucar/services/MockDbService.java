@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service
@@ -21,6 +22,10 @@ public class MockDbService {
 
     public void instantiateTestDatabase() throws ParseException {
         Car car1 = Car.builder()
+                .createdDate(LocalDate.now())
+                .modifiedDate(LocalDate.now())
+                .modifiedBy("Teste")
+                .isDeleted(false)
                 .modelo("XYZ")
                 .name("GOL")
                 .year(2000L)
@@ -34,6 +39,10 @@ public class MockDbService {
                 .build();
 
         Car car2 = Car.builder()
+                .createdDate(LocalDate.now())
+                .modifiedDate(LocalDate.now())
+                .modifiedBy("Teste")
+                .isDeleted(false)
                 .modelo("XYZ")
                 .name("CELTA")
                 .year(1998L)
@@ -47,6 +56,10 @@ public class MockDbService {
                 .build();
 
         Car car3 = Car.builder()
+                .createdDate(LocalDate.now())
+                .modifiedDate(LocalDate.now())
+                .modifiedBy("Teste")
+                .isDeleted(false)
                 .modelo("XYZ")
                 .name("CLIO")
                 .year(1999L)
@@ -64,6 +77,10 @@ public class MockDbService {
         carService.save(car3);
 
         var rentCar = RentCar.builder()
+                .createdDate(LocalDate.now())
+                .modifiedDate(LocalDate.now())
+                .modifiedBy("Teste")
+                .isDeleted(false)
                 .value(12D)
                 .rentDays(10L)
                 .initialDate(LocalDateTime.now())

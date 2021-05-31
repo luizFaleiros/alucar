@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RentCarDto implements BaseDTO {
+public class RentCarDto {
 
     @NotNull(message = "É necessario o dia inicial")
     @JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")

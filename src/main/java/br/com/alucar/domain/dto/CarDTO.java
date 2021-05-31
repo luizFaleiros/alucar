@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CarDTO implements BaseDTO {
+public class CarDTO{
 
     @NotEmpty
     private String modelo;
