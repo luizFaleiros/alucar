@@ -37,6 +37,9 @@ public class RentCarService implements ServiceWithFilter<RentCar, RentCarFilter>
     @Override
     public void delete(Long id) {
         RentCar rentCar = findById(id);
+        Car car = rentCar.getCar();
+        car.setIsRented(false);
+        carService.save(car);
         rentCarRepository.delete(rentCar);
 
     }
