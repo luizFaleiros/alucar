@@ -33,6 +33,6 @@ public abstract class BaseEntity {
     private String modifiedBy;
 
     @Column(name = "IS_DELETED")
-    private Boolean isDeleted;
+    private Boolean isDeleted = false;
 
 }

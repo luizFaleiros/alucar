@@ -16,11 +16,11 @@ import java.time.LocalDateTime;
 public class RentCarDto {
 
     @NotNull(message = "É necessario o dia inicial")
-    @JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime initialDate;
 
     @NotNull(message = "É necessario o dia final")
-    @JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime finalDate;
 
     @NotNull(message = "É necessario o id do carro")

@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -24,7 +25,7 @@ public class CarService implements ServiceWithFilter<Car, CarFilter> {
     }
 
     public Page<Car> findAll(CarFilter carFilter, Pageable pageable) {
-        return carRepository.findAll(new CarSpecification(carFilter), pageable);
+        return  carRepository.findAll(new CarSpecification(carFilter), pageable);
     }
 
     @Override
@@ -48,6 +49,10 @@ public class CarService implements ServiceWithFilter<Car, CarFilter> {
 
     @Override
     public void save(Car car) {
+        car.setCreatedDate(LocalDate.now());
+        car.setModifiedDate(LocalDate.now());
+        car.setModifiedBy("Teste");
+        car.setIsDeleted(false);
         carRepository.save(car);
     }
 

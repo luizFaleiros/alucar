@@ -47,7 +47,7 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
 
     @PostMapping
     @Override
-    public ResponseEntity<Void> save(@Valid @RequestBody CarDTO carDTO){
+    public ResponseEntity<Void> save(@RequestBody CarDTO carDTO){
         carService.save(carMapper.toEntity(carDTO));
         return ResponseEntity.ok().build();
     }
@@ -55,14 +55,14 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
 
     @PutMapping("/id")
     @Override
-    public ResponseEntity<Void> update(@Valid @RequestBody CarDTO carDTO, @PathVariable Long id){
+    public ResponseEntity<Void> update(@RequestBody CarDTO carDTO, @PathVariable Long id){
         carService.update(carMapper.toEntity(carDTO), id);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/delete/{id}")
     @Override
-    public ResponseEntity<Void> delete(Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         carService.logicalDelete(id);
         return ResponseEntity.ok().build();
     }
