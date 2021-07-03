@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @SuperBuilder
 public class RentCar extends BaseEntity{
 
-    @Column(name = "VALUE")
+    @Column(name = "RENT_VALUE")
     private Double value;
 
     @Column(name = "RENT_DAYS")

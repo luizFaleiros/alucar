@@ -53,7 +53,7 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
     }
 
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     @Override
     public ResponseEntity<Void> update(@RequestBody CarDTO carDTO, @PathVariable Long id){
         carService.update(carMapper.toEntity(carDTO), id);

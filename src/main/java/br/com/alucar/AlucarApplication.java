@@ -10,14 +10,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication
 @ComponentScan("br.com.alucar")
 @EnableJpaRepositories
-public class AlucarApplication implements CommandLineRunner {
+public class AlucarApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AlucarApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-
-	}
 }
