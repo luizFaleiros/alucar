@@ -14,7 +14,7 @@ public interface ControllerBase<FILTER,
     ResponseEntity<RESPONSE> findById(Long id);
 
 
-    ResponseEntity<Void> save(DTO dto);
+    ResponseEntity<?> save(DTO dto);
 
 
     ResponseEntity<Void> update(DTO dto, Long id);

@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -52,16 +53,21 @@ public class RentCarService implements ServiceWithFilter<RentCar, RentCarFilter>
     }
 
     @Override
-    public void save(RentCar entity) {
-
+    public RentCar save(RentCar entity) {
+        return null;
     }
 
-    public void save(RentCar entity, Long carId) {
+    public RentCar save(RentCar entity, Long carId) {
         entity.setRentDays(calculateRentDays(entity.getInitialDate(), entity.getFinalDate()));
         Car car = carService.findById(carId);
         car.setIsRented(true);
         entity.setCar(car);
-        rentCarRepository.save(entity);
+        entity.setValue(entity.getRentDays() * car.getRentValue());
+        entity.setCreatedDate(LocalDate.now());
+        entity.setModifiedBy("Teste");
+        entity.setModifiedDate(LocalDate.now());
+        entity.setIsDeleted(false);
+        return rentCarRepository.save(entity);
     }
 
     private Long calculateRentDays(LocalDateTime initialDate, LocalDateTime finalDate) {

@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-@EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
 
     private static final MediaType APPLICATION_YAML = MediaType.valueOf("application/x-yaml");

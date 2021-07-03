@@ -13,7 +13,7 @@ public interface CarMapper {
 
     CarMapper INSTANCE = Mappers.getMapper(CarMapper.class);
 
-    @Mapping(source = "id", target = "id")
+    @Mapping(source = "id", target = "key")
     CarResponseDTO toResponse(Car car);
 
     @InheritInverseConfiguration

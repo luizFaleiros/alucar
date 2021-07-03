@@ -48,12 +48,12 @@ public class CarService implements ServiceWithFilter<Car, CarFilter> {
     }
 
     @Override
-    public void save(Car car) {
+    public Car save(Car car) {
         car.setCreatedDate(LocalDate.now());
         car.setModifiedDate(LocalDate.now());
         car.setModifiedBy("Teste");
         car.setIsDeleted(false);
-        carRepository.save(car);
+        return carRepository.save(car);
     }
 
     @Override
