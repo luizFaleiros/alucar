@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.time.LocalDateTime;
 
@@ -14,8 +15,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RentCarResponseDTO {
-    private Long id;
+public class RentCarResponseDTO  extends RepresentationModel<RentCarResponseDTO> {
+    private Long key;
     private Double value;
     private Long rentDays;
     private LocalDateTime initialDate;

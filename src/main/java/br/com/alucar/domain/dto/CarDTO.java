@@ -1,21 +1,18 @@
 package br.com.alucar.domain.dto;
 
 import br.com.alucar.domain.enums.CarTypeEnum;
-import br.com.alucar.domain.enums.ShiftEnum;
 import br.com.alucar.domain.enums.ColorEnum;
+import br.com.alucar.domain.enums.ShiftEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CarDTO{
+public class CarDTO {
 
     private String modelo;
     private String name;

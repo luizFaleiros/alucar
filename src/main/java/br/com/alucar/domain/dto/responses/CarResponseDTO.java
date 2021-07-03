@@ -6,13 +6,14 @@ import br.com.alucar.domain.enums.ColorEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CarResponseDTO {
-    private Long id;
+public class CarResponseDTO  extends RepresentationModel<CarResponseDTO> {
+    private Long key;
     private String modelo;
     private String name;
     private Long year;
