@@ -12,8 +12,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableJpaRepositories
 public class AlucarApplication {
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(AlucarApplication.class, args);
 	}
-
 }

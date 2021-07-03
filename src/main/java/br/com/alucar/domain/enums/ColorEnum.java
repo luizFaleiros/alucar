@@ -3,8 +3,6 @@ package br.com.alucar.domain.enums;
 import lombok.Getter;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Getter
 public enum ColorEnum {

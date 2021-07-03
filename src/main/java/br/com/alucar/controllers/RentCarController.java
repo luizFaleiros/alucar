@@ -33,6 +33,7 @@ public class RentCarController implements ControllerBase<RentCarFilter,RentCarDt
 
     private final RentCarMapper rentCarMapper;
 
+
     @GetMapping(value = "/list", produces = {"application/json", "application/xml", "application/x-yaml"})
     public ResponseEntity<List<RentCarResponseDTO>> findAll() {
         var listCar =rentCarService.findAll().stream().map(rentCarMapper::toResponse).collect(Collectors.toList());
@@ -70,6 +71,7 @@ public class RentCarController implements ControllerBase<RentCarFilter,RentCarDt
         rentCarService.update(rentCarMapper.toEntity(dto),id);
         return ResponseEntity.ok().build();
     }
+
 
     @DeleteMapping(value = "/delete/{id}", consumes = {"application/json", "application/xml", "application/x-yaml"})
     @Override
