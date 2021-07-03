@@ -2,6 +2,8 @@ package br.com.alucar.domain.enums;
 
 import lombok.Getter;
 
+import java.util.Arrays;
+
 @Getter
 public enum ColorEnum {
     RED(1L, "VERMELHO"),
@@ -16,4 +18,9 @@ public enum ColorEnum {
         this.name = name;
     }
 
+    public static ColorEnum getById(Long id) {
+        return Arrays.stream(ColorEnum.values())
+                .filter(colorEnum -> colorEnum.getId().equals(id))
+                .findAny().orElse(null);
+    }
 }

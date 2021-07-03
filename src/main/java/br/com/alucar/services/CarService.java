@@ -44,7 +44,7 @@ public class CarService implements ServiceWithFilter<Car, CarFilter> {
     public void logicalDelete(Long id) {
         Car car = findById(id);
         car.setIsDeleted(true);
-        save(car);
+        carRepository.save(car);
     }
 
     @Override

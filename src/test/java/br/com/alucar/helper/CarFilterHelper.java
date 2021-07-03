@@ -12,7 +12,8 @@ public class CarFilterHelper {
         return  CarFilter.builder()
                 .name("Gol")
                 .year(Integer.toUnsignedLong(1983))
-                .type(CarTypeEnum.MIDDLE)
+
+                .type(CarTypeEnum.HATCH)
                 .seatsQuantity(Integer.toUnsignedLong(5))
                 .portQuantity(Integer.toUnsignedLong(2))
                 .color(ColorEnum.WHITE)
