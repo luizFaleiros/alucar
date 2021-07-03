@@ -14,7 +14,7 @@ public interface BaseService<Entity extends BaseEntity> {
 
     void logicalDelete(Long id);
 
-    void save(Entity entity);
+    Entity save(Entity entity);
 
     Entity update(Entity entity, Long id);
 }

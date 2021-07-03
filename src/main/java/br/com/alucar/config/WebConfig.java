@@ -1,26 +1,21 @@
 package br.com.alucar.config;
 
-
-import br.com.alucar.domain.converters.serialization.YamlsToHttp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import br.com.alucar.domain.converters.serialization.YamlsToHttp;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 import java.util.Arrays;
-
 import java.util.List;
 
-
 @Configuration
-@EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
 
     private static final MediaType APPLICATION_YAML = MediaType.valueOf("application/x-yaml");
@@ -38,7 +33,6 @@ public class WebConfig implements WebMvcConfigurer {
         source.registerCorsConfiguration("/**",corsConfig);
         return source;
     }
-
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters){
         converters.add(new YamlsToHttp());
     }

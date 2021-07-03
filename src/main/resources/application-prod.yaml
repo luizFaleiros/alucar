@@ -1,0 +1,15 @@
+spring:
+  jpa:
+  hibernate:
+    ddl-auto: none
+    naming:
+      implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+      physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+  show-sql: false
+  properties:
+    hibernate:
+      format_sql: false
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: mysql://b17855a550ae82:39c9a832@us-cdbr-east-04.cleardb.com/heroku_f699cd1a6974863?reconnect=true

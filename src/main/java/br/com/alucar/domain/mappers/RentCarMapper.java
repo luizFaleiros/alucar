@@ -13,7 +13,7 @@ import org.mapstruct.factory.Mappers;
 public interface RentCarMapper {
     RentCarMapper INSTANCE = Mappers.getMapper(RentCarMapper.class);
 
-    @Mapping(source = "id", target = "id")
+    @Mapping(source = "id", target = "key")
     RentCarResponseDTO toResponse(RentCar car);
 
     @InheritInverseConfiguration
