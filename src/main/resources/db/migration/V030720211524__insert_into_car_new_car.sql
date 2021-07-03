@@ -1,0 +1,9 @@
+--insert into car
+--        (created_date, is_deleted, modified_by, modified_date, color, is_rented, model, name, port_quantity, rent_value, seats_quantity, shift, type, year)
+--        values (NOW(), false, 'TESTE',NOW(), 'RED', false, ?, ?, ?, ?, ?, ?, ?, ?);
+--insert into car
+--        (created_date, is_deleted, modified_by, modified_date, color, is_rented, model, name, port_quantity, rent_value, seats_quantity, shift, type, year)
+--        values (NOW(), false, 'TESTE',NOW(), 'WHITE', false, ?, ?, ?, ?, ?, ?, ?, ?);
+--insert into car
+--        (created_date, is_deleted, modified_by, modified_date, color, is_rented, model, name, port_quantity, rent_value, seats_quantity, shift, type, year)
+--        values (NOW(), false, 'TESTE',NOW(), 'BLACK', false, ?, ?, ?, ?, ?, ?, ?, ?);
