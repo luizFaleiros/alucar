@@ -17,6 +17,7 @@ public class CarHelper {
                 .portQuantity(Integer.toUnsignedLong(2))
                 .color(ColorEnum.WHITE)
                 .shift(ShiftEnum.MANUAL)
+                .rentValue(5D)
                 .isDeleted(false)
                 .isRented(false)
                 .build();
