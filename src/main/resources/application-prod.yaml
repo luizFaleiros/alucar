@@ -12,4 +12,4 @@ spring:
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${CLEARDB_DATABASE_URL}
+    url: ${JAWSDB_MARIA_URL}
