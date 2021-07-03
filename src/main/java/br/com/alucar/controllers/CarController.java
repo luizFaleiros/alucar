@@ -31,7 +31,7 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
 
     private final CarMapper carMapper;
 
-    @PostMapping("/list")
+    @PostMapping(value = "/list", produces = {"application/json", "application/xml", "application/x-yaml"}, consumes = {"application/json", "application/xml", "application/x-yaml"})
     @Override
     public ResponseEntity<Page<CarResponseDTO>> findAll(@RequestBody CarFilter carFilter,
                                                         @RequestParam(name = "size", defaultValue = "1" )int size,
@@ -39,13 +39,15 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
         return ResponseEntity.ok(carService.findAll(carFilter, PageRequest.of(page,size)).map(carMapper::toResponse));
     }
 
-    @GetMapping("/{id}")
+
+    @GetMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
     @Override
     public ResponseEntity<CarResponseDTO> findById(@PathVariable Long id){
         return ResponseEntity.ok(carMapper.toResponse(carService.findById(id)));
     }
 
-    @PostMapping
+
+    @PostMapping(value="/save", produces = {"application/json", "application/xml", "application/x-yaml"}, consumes = {"application/json", "application/xml", "application/x-yaml"})
     @Override
     public ResponseEntity<Void> save(@RequestBody CarDTO carDTO){
         carService.save(carMapper.toEntity(carDTO));
@@ -53,14 +55,14 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
     }
 
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"}, consumes = {"application/json", "application/xml", "application/x-yaml"})
     @Override
     public ResponseEntity<Void> update(@RequestBody CarDTO carDTO, @PathVariable Long id){
         carService.update(carMapper.toEntity(carDTO), id);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
     @Override
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         carService.logicalDelete(id);
