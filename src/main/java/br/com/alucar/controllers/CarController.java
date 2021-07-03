@@ -39,11 +39,13 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
         return ResponseEntity.ok(carService.findAll(carFilter, PageRequest.of(page,size)).map(carMapper::toResponse));
     }
 
+
     @GetMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
     @Override
     public ResponseEntity<CarResponseDTO> findById(@PathVariable Long id){
         return ResponseEntity.ok(carMapper.toResponse(carService.findById(id)));
     }
+
 
     @PostMapping(value="/save", produces = {"application/json", "application/xml", "application/x-yaml"}, consumes = {"application/json", "application/xml", "application/x-yaml"})
     @Override
