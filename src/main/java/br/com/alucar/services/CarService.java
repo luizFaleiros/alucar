@@ -67,6 +67,7 @@ public class CarService implements ServiceWithFilter<Car, CarFilter> {
         bdEntity.setPortQuantity(entity.getPortQuantity());
         bdEntity.setColor(entity.getColor());
         bdEntity.setShift(entity.getShift());
+        bdEntity.setIsRented(entity.getIsRented());
         return carRepository.save(bdEntity);
     }
 
