@@ -25,7 +25,7 @@ public class CarService implements ServiceWithFilter<Car, CarFilter> {
     }
 
     public Page<Car> findAll(CarFilter carFilter, Pageable pageable) {
-        return  carRepository.findAll(new CarSpecification(carFilter), pageable);
+        return carRepository.findAll(new CarSpecification(carFilter), pageable);
     }
 
     @Override
@@ -67,6 +67,7 @@ public class CarService implements ServiceWithFilter<Car, CarFilter> {
         bdEntity.setPortQuantity(entity.getPortQuantity());
         bdEntity.setColor(entity.getColor());
         bdEntity.setShift(entity.getShift());
+        bdEntity.setRentValue(entity.getRentValue());
         bdEntity.setIsRented(entity.getIsRented());
         return carRepository.save(bdEntity);
     }
