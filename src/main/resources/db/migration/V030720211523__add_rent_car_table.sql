@@ -1,6 +1,6 @@
 create table rent_car
     (
-    ID bigint not null auto_increment,
+     ID bigint NOT NULL IDENTITY(1,1),
     CREATED_DATE date,
     IS_DELETED bit,
     MODIFIED_BY varchar(255),

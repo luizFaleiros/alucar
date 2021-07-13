@@ -11,5 +11,7 @@ spring:
       format_sql: false
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${CLEARDB_CHARCOAL_URL}&verifyServerCertificate=false&useSSL=false&requireSSL=false
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://${db_url}
+    username: ${db_usuario}
+    password: ${db_senha}
