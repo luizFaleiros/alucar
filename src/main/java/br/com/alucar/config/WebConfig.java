@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.ContentNegotiationConfi
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,18 +23,24 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**");
+        registry.addMapping("/api/**")
+                .allowedOrigins("*/*")
+                .allowedMethods("POST", "GET", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .exposedHeaders("*")
+                .allowCredentials(false);
     }
 
-    @Bean
-    CorsConfigurationSource corsConfiguration(){
-        var corsConfig = new CorsConfiguration().applyPermitDefaultValues();
-        corsConfig.setAllowedMethods(Arrays.asList("POST","GET","PUT","DELETE","OPTIONS"));
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**",corsConfig);
-        return source;
-    }
-    public void extendMessageConverters(List<HttpMessageConverter<?>> converters){
+//    @Bean
+//    CorsConfigurationSource corsConfiguration() {
+//        var corsConfig = new CorsConfiguration().applyPermitDefaultValues();
+//        corsConfig.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
+//        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", corsConfig);
+//        return source;
+//    }
+
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new YamlsToHttp());
     }
 
