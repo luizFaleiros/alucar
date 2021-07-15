@@ -4,6 +4,7 @@ import br.com.alucar.domain.dto.CarDTO;
 import br.com.alucar.domain.dto.filters.CarFilter;
 import br.com.alucar.domain.dto.responses.CarResponseDTO;
 import br.com.alucar.domain.entities.Car;
+import br.com.alucar.domain.enums.ColorEnum;
 import br.com.alucar.domain.mappers.CarMapper;
 import br.com.alucar.services.CarService;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -80,6 +84,11 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         carService.logicalDelete(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping(value= "/colors", produces = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<List<ColorEnum>> coolors(){
+        return ResponseEntity.ok(Arrays.asList(ColorEnum.values()));
     }
 
 }

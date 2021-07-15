@@ -8,7 +8,10 @@ import java.util.Arrays;
 public enum ColorEnum {
     RED(1L, "VERMELHO"),
     WHITE(2L, "BRANCO"),
-    BLACK(3L,"PRETO");
+    BLACK(3L,"PRETO"),
+    GRAY(4L,"CINZA"),
+    YELLOW(5L,"AMARELO"),
+    BLUE(4L,"AZUL");
 
     private Long id;
     private String name;

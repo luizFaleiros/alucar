@@ -13,3 +13,5 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:${JAWSDB_MARIA_URL}
+    username: ${db_usuario}
+    password: ${db_senha}
