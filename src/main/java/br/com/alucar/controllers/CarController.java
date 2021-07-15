@@ -87,7 +87,7 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
     }
 
     @GetMapping(value= "/colors", produces = {"application/json", "application/xml", "application/x-yaml"})
-    public ResponseEntity<List<ColorEnum>> coolors(){
+    public ResponseEntity<List<ColorEnum>> colors(){
         return ResponseEntity.ok(Arrays.asList(ColorEnum.values()));
     }
 
