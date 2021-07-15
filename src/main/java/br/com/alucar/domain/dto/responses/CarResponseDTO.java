@@ -14,7 +14,7 @@ import org.springframework.hateoas.RepresentationModel;
 @NoArgsConstructor
 public class CarResponseDTO  extends RepresentationModel<CarResponseDTO> {
     private Long key;
-    private String modelo;
+    private String model;
     private String name;
     private Long year;
     private CarTypeEnum type;

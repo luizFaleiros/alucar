@@ -21,7 +21,7 @@ import javax.persistence.OneToOne;
 public class Car extends BaseEntity {
 
     @Column(name = "MODEL")
-    private String modelo;
+    private String model;
 
     @Column(name = "NAME")
     private String name;
