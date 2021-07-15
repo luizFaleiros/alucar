@@ -6,7 +6,7 @@ import lombok.Getter;
 public enum CarTypeEnum {
      HATCH(1L,"Hatch"),
      SEDAN(2L,"Sedan"),
-     CONVERSÍVEL(3L,"Conversível"),
+     CONVERSIVEL(3L,"Conversível"),
      SUV (4L,"SUV"),
      CROSSOVER(5L,"Crossover"),
      MINIVAN(6L,"Minivan"),

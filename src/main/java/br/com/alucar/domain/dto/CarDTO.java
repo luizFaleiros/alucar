@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CarDTO {
 
-    private String modelo;
+    private String model;
     private String name;
     private Long year;
     private CarTypeEnum type;
