@@ -84,7 +84,7 @@ public class CarServiceTest {
         when(carRepository.findById(anyLong())).thenReturn(Optional.of(carMock));
         Car car = carService.findById(1L);
         verify(carRepository, times(1)).findById(anyLong());
-        assertEquals(car.getModelo(), carMock.getModelo());
+        assertEquals(car.getModel(), carMock.getModel());
         assertEquals(car.getName(), carMock.getName());
         assertEquals(car.getYear(), carMock.getYear());
         assertEquals(car.getType(), carMock.getType());
@@ -138,7 +138,7 @@ public class CarServiceTest {
         Car car = carService.update(carMock, 1L);
         verify(carRepository, times(1)).findById(anyLong());
         verify(carRepository, times(1)).save(any(Car.class));
-        assertEquals(car.getModelo(), carMock.getModelo());
+        assertEquals(car.getModel(), carMock.getModel());
         assertEquals(car.getName(), carMock.getName());
         assertEquals(car.getYear(), carMock.getYear());
         assertEquals(car.getType(), carMock.getType());

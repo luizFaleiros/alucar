@@ -59,7 +59,7 @@ public class CarService implements ServiceWithFilter<Car, CarFilter> {
     @Override
     public Car update(Car entity, Long id) {
         Car bdEntity = findById(id);
-        bdEntity.setModelo(entity.getModelo());
+        bdEntity.setModel(entity.getModel());
         bdEntity.setName(entity.getName());
         bdEntity.setYear(entity.getYear());
         bdEntity.setType(entity.getType());

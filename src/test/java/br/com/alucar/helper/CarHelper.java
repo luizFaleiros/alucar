@@ -9,7 +9,7 @@ public class CarHelper {
 
     public static Car validCar(){
         return Car.builder()
-                .modelo("XYZ")
+                .model("XYZ")
                 .name("Gol")
                 .year(Integer.toUnsignedLong(1983))
                 .type(CarTypeEnum.HATCH)
@@ -27,7 +27,7 @@ public class CarHelper {
 
     public static Car rentedCar(){
         return Car.builder()
-                .modelo("XYZ")
+                .model("XYZ")
                 .name("Gol")
                 .year(Integer.toUnsignedLong(1983))
                 .type(CarTypeEnum.HATCH)
