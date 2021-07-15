@@ -55,10 +55,10 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
 
         return ResponseEntity.ok(carMapper.toResponse(carService.findById(id)));
     }
+
     @PostMapping(value="/save",
             produces = {"application/json", "application/xml", "application/x-yaml"},
             consumes = {"application/json", "application/xml", "application/x-yaml"})
-
     @Override
     public ResponseEntity<RepresentationModel> save(@RequestBody CarDTO carDTO){
         Car car = carService.save(carMapper.toEntity(carDTO));
@@ -68,10 +68,9 @@ public class CarController implements ControllerBase<CarFilter,CarDTO,CarRespons
                         .withSelfRel());
         return ResponseEntity.ok(representation);
     }
-    @PutMapping(value = "/{id}",
-            produces = {"application/json", "application/xml", "application/x-yaml"},
-            consumes = {"application/json", "application/xml", "application/x-yaml"})
 
+    @PutMapping(value = "/update/{id}",
+            consumes = {"application/json", "application/xml", "application/x-yaml"})
     @Override
     public ResponseEntity<Void> update(@RequestBody CarDTO carDTO, @PathVariable Long id){
         carService.update(carMapper.toEntity(carDTO), id);
