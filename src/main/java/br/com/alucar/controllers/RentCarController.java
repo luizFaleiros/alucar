@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/rent-car")
 @RequiredArgsConstructor
-public class RentCarController implements ControllerBase<RentCarFilter,RentCarDto, RentCarResponseDTO> {
+public class RentCarController {
 
     private final RentCarService rentCarService;
 
@@ -40,12 +40,8 @@ public class RentCarController implements ControllerBase<RentCarFilter,RentCarDt
         return ResponseEntity.ok(listCar);
     }
 
-    @Override
-    public ResponseEntity<Page<RentCarResponseDTO>> findAll(RentCarFilter carFilter, int size, int page) {
-        return null;
-    }
 
-    @Override
+
     @GetMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
     public ResponseEntity<RentCarResponseDTO> findById(@PathVariable Long id) {
         var rentCar = rentCarMapper.toResponse(rentCarService.findById(id))
@@ -53,8 +49,8 @@ public class RentCarController implements ControllerBase<RentCarFilter,RentCarDt
         return ResponseEntity.ok(rentCar);
     }
 
-    @Override
-    @PostMapping(value = "/save",produces = {"application/json", "application/xml", "application/x-yaml"}, consumes = {"application/json", "application/xml", "application/x-yaml"} )
+
+    @PostMapping(value = "/save", produces = {"application/json", "application/xml", "application/x-yaml"}, consumes = {"application/json", "application/xml", "application/x-yaml"} )
     public ResponseEntity<RepresentationModel> save(@RequestBody RentCarDto dto) {
         RentCar rentcar = rentCarService.save(rentCarMapper.toEntity(dto),dto.getCarId());
         var representation =  new RepresentationModel();
@@ -65,7 +61,7 @@ public class RentCarController implements ControllerBase<RentCarFilter,RentCarDt
         return ResponseEntity.ok(representation);
     }
 
-    @Override
+
     @PutMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"}, consumes = {"application/json", "application/xml", "application/x-yaml"})
     public ResponseEntity<Void> update(RentCarDto dto, Long id) {
         rentCarService.update(rentCarMapper.toEntity(dto),id);
@@ -74,7 +70,6 @@ public class RentCarController implements ControllerBase<RentCarFilter,RentCarDt
 
 
     @DeleteMapping(value = "/delete/{id}", consumes = {"application/json", "application/xml", "application/x-yaml"})
-    @Override
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         rentCarService.delete(id);
         return ResponseEntity.ok().build();

@@ -1,13 +1,13 @@
 spring:
   datasource:
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://${db_url}
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:${db_url}
     username: ${db_usuario}
     password: ${db_senha}
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.SQLServer2012Dialect
+        dialect: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddl-auto: none
     show-sql: true

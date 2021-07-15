@@ -1,7 +1,7 @@
 create table rent_car
     (
-     ID bigint NOT NULL IDENTITY(1,1),
-    CREATED_DATE date,
+    ID bigint not null auto_increment,
+    CREATED_DATA date,
     IS_DELETED bit,
     MODIFIED_BY varchar(255),
     MODIFIED_DATE date,

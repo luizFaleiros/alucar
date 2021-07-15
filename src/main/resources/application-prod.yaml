@@ -9,9 +9,9 @@ spring:
   properties:
     hibernate:
       format_sql: false
-      dialect: org.hibernate.dialect.SQLServer2012Dialect
+      dialect: org.hibernate.dialect.MySQL5Dialect
   datasource:
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://${db_url}
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:${JAWSDB_MARIA_URL}
     username: ${db_usuario}
     password: ${db_senha}
